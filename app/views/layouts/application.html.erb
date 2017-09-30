@@ -10,6 +10,14 @@
 </head>
 
 <body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+<ul class="nav navbar-nav navbar-right">
+<li><%= link_to "Add a restaurant", new_restaurant_path%></li>
+<li><%= link_to "See all restaurants", restaurants_path%></li>
+</ul>
+</div>
+</nav>
   <%= yield %>
 </body>
 </html>

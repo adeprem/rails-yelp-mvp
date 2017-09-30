@@ -1,4 +1,4 @@
-<%= form_for(@restaurant) do |f| %>
+<%= simple_form_for (@restaurant) do |f| %>
 <% if @restaurant.errors.any? %>
     <div id="error_explanation">
       <ul>
@@ -8,14 +8,10 @@
       </ul>
     </div>
   <% end %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.label :address %>
-<%= f.text_field :address %>
-<%= f.label :phone_number %>
-<%= f.text_field :phone_number %>
-<%= f.label :category %>
-<%= f.text_field :category %>
-
-<%= f.submit %>
+<%= f.input :name, label: "Restaurant's name", error: 'Please enter a name' %> <br>
+    <%= f.input :address, label: "Restaurant's address",  error: 'Please enter an address' %> <br>
+    <%= f.input :phone_number, label: "Restaurant's phone number"%> <br>
+  <%= f.input :category, label: "Food category", collection: ["chinese", "italian", "japanese", "french", "belgian"] %> <br>
+  <br>
+  <%= f.submit "add a review", class: "btn btn-primary" %>
 <% end %>
