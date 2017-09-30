@@ -1,27 +1,35 @@
 
+<div class="container">
+  <div class="row">
 <h3>  <%= @restaurant.name %></h3>
 <h6><%= @restaurant.category %></h6>
 <p><%= @restaurant.address %></p>
 <p><%= @restaurant.phone_number%></p>
 
+</div>
 <br>
 <br>
-
+<div class="row">
 <% @restaurant.reviews.each do |review| %>
-<h5>Review:</h5>
-<p>  <%=review.content %></p>
-<p><%= review.rating %>/ 5</p>
-<br>
+<div class="col-xs-12 col-sm-4">
+  <div class="card black-text">
+    <h5>Review:</h5>
+    <p>  <%=review.content %></p>
+    <p><%= review.rating %>/ 5</p>
+    <br>
+</div>
+</div>
 <% end %>
+</div>
 
 
-<br>
 
-<h4>Add your review</h4>
-
+<div class="row">
 <%= simple_form_for [@restaurant, @review] do |f| %>
+<h4>Add your review</h4>
 <%= f.input :content, label: 'Review', error: 'Please enter a review' %> <br>
-  <%= f.input :rating, label: "Rating (please grade from 0 to 5)", collection: 0..5 %> <br>
-  <br>
-  <%= f.submit "add a review", class: "btn btn-primary" %>
+<%= f.input :rating, label: "Rating (please grade from 0 to 5)", collection: 0..5 %> <br>
+<br>
+<%= f.submit "add a review", class: "btn btn-primary" %>
 <% end %>
+</div>
